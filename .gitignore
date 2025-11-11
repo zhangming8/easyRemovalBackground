@@ -1,0 +1,34 @@
+
+.vs
+#.vscode
+*.so
+*.o
+.DS_Store
+*pyc
+
+*.pth
+# *.jpg
+# *.png
+# *.jpeg
+*.mp4
+*.avi
+*.flv
+*.dll
+*.exp
+*.lib
+build
+build_*
+*.engine
+*.onnx
+# thirdparty
+
+# !asserts/01.png
+# !asserts/02.png
+# !asserts/dog.png
+# !asserts/person.webp
+
+# *.json
+__pycache__
+__pycache__/*
+.idea
+.vscode
