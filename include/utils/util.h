@@ -5,6 +5,8 @@
 #include <fstream>
 #include <filesystem>
 #include <direct.h>
+#include <windows.h>
+#include <psapi.h>
 
 #include <cudnn.h>
 #include <cuda_runtime.h>

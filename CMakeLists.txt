@@ -60,8 +60,11 @@ set(LIBS
 
 
 qt5_wrap_cpp(moc_source_segment "include/interface/segment/mainwindow.h")
-add_executable(easyRemovalBackground main_segment.cpp "src/interface/segment/mainwindow.cpp" ${moc_source_segment})
-# add_executable(easyRemovalBackground WIN32 main_segment.cpp "src/interface/segment/mainwindow.cpp" ${moc_source_segment})    
+
+add_executable(easyRemovalBackground WIN32 main_segment.cpp "src/interface/segment/mainwindow.cpp" ${moc_source_segment})    
 target_link_libraries(easyRemovalBackground ${LIBS})
+
+add_executable(test main_segment.cpp "src/interface/segment/mainwindow.cpp" ${moc_source_segment})
+target_link_libraries(test ${LIBS})
 
 message(STATUS "===================>>>>>>>>> Build configuration complete <<<<<<<<===================")

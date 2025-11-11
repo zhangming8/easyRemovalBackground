@@ -23,7 +23,7 @@ namespace matting
 
     void Matter::init_onnx(std::string onnx_path)
     {
-        logger_->info("[Matter] init_onnx with onnx file: {}", onnx_path);
+        logger_->info("[Matter] init_onnx with onnx file: {} with device {}", onnx_path, device_id_);
         onnx_engine_ = std::make_unique<ONNXEngine>(onnx_path, device_id_);
 
         input_h_ = onnx_engine_->input_height_;
@@ -42,7 +42,7 @@ namespace matting
 
     cv::Mat Matter::resize_and_pad(const cv::Mat &input, size_t height, size_t width, const cv::Scalar &bgcolor)
     {
-        float r = std::min(width / (input.cols * 1.0), height / (input.rows * 1.0));
+        float r = min(width / (input.cols * 1.0), height / (input.rows * 1.0));
         int unpad_w = r * input.cols;
         int unpad_h = r * input.rows;
         cv::Mat re(unpad_h, unpad_w, CV_8UC3);

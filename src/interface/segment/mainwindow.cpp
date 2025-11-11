@@ -12,13 +12,14 @@
 #include <QMessageBox>
 #include <QImageReader>
 #include <QActionGroup>
+#include <QSysInfo>
 
 #include "interface/segment/mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent, Args &args)
     : QMainWindow(parent), args_(args), current_model_index_(0), device_id_(0)
 {
-    logger_ = Logger::GetInstance(args_.root_path, "log.log", "removeBg").get_logger();
+    logger_ = Logger::GetInstance(args_.root_path, "easyRemovalBackground.log", "removeBg").get_logger();
     loadConfigWithQSettings();
     initUI();
     // initModels();
@@ -78,6 +79,7 @@ void MainWindow::initUI()
         std::string device = cuda_devices.at(i) + "(" + std::to_string(i) + ")";
         qDebug() << "Found device:" << QString::fromStdString(device);
         current_devices.append(QString::fromStdString(device));
+        logger_->info("Found device {}/{}: {}", i, cuda_devices.size(), device);
     }
     current_devices.append("CPU");
     if (current_devices == devices_)
@@ -197,6 +199,8 @@ void MainWindow::initModels()
         QMessageBox::critical(this, "model not found", QString("model file not found: %1").arg(QString::fromStdString(weight)));
         exit(-1);
     }
+    logger_->info("Loading model: {}", weight);
+    logger_->info("device id: {} model name: '{}'", device_id_, model_list_names_.at(current_model_index_).toStdString());
 
     matting_model_ = std::make_shared<matting::Matter>(weight, logger_, device_id_);
 }
@@ -552,6 +556,29 @@ void MainWindow::saveConfigWithQSettings()
 
 void MainWindow::loadConfigWithQSettings()
 {
+    logger_->info("---------------------------------");
+    // logger_->info("Machine host name: {}", QSysInfo::machineHostName().toStdString());
+    logger_->info("System: {}", QSysInfo::prettyProductName().toStdString());
+    logger_->info("Product type: {}", QSysInfo::productType().toStdString());
+    logger_->info("Product version: {}", QSysInfo::productVersion().toStdString());
+    logger_->info("Kernel type: {}", QSysInfo::kernelType().toStdString());
+    logger_->info("Kernel version: {}", QSysInfo::kernelVersion().toStdString());
+    logger_->info("Current cpu architecture: {}", QSysInfo::currentCpuArchitecture().toStdString());
+    logger_->info("Build cpu architecture: {}", QSysInfo::buildCpuArchitecture().toStdString());
+
+    MEMORYSTATUSEX memoryStatus;
+    memoryStatus.dwLength = sizeof(memoryStatus);
+    GlobalMemoryStatusEx(&memoryStatus);
+    logger_->info("Total physical memory: {} MB", memoryStatus.ullTotalPhys / (1024 * 1024));
+    logger_->info("Available physical memory: {} MB", memoryStatus.ullAvailPhys / (1024 * 1024));
+    logger_->info("Memory usage: {}%", memoryStatus.dwMemoryLoad);
+
+    SYSTEM_INFO sysinfo;
+    GetSystemInfo(&sysinfo);
+    logger_->info("Processor count: {}", sysinfo.dwNumberOfProcessors);
+    logger_->info("Processor level: {}", sysinfo.wProcessorLevel);
+    logger_->info("Processor architecture: {}", sysinfo.wProcessorArchitecture);
+
     logger_->info("Loading config from: {}", config_file_path_.toStdString());
     QSettings settings(config_file_path_, QSettings::IniFormat);
 
