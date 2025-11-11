@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-      <img width="60" src="./asserts/icon.png" alt=" Banner">
+      <img width="80" src="./asserts/icon.png" alt=" Banner">
   </p>
 
 # Easy Removal Background
@@ -12,7 +12,7 @@
 
 ### 1. Run by pre-built binary file
 
-- Download the pre-built binary file from [Releases](https://github.com/zhangming8/easyRemovalBackground/releases)
+- Download the pre-built binary file from [GoogleDrive](https://drive.google.com/drive/folders/1pTtbxMIw2KGwD1Zi5dUIcp0njg3eab_I) or [BaiduNetdisk](https://pan.baidu.com/s/1CY_Dx8KnNrrd0teA71y9HQ?pwd=easy) (code: `easy`)
 
 - Unzip and run `easyRemovalBackground.exe`
 
