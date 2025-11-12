@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-      <img width="80" src="./asserts/icon.png" alt=" Banner">
+      <img width="80" src="./assets/icon.png" alt=" Banner">
   </p>
 
 # Easy Removal Background
@@ -58,7 +58,7 @@ cmake --build . --config Release
 
 <div align="center">
   <p>
-       <img width="100%" src="./asserts/01.png" alt="start">
+       <img width="100%" src="./assets/01.png" alt="start">
   </p>
 </div>
 
@@ -69,7 +69,7 @@ cmake --build . --config Release
 
 <div align="center">
   <p>
-       <img width="100%" src="./asserts/03.jpg" alt="start">
+       <img width="100%" src="./assets/03.jpg" alt="start">
   </p>
 </div>
 
@@ -81,7 +81,7 @@ cmake --build . --config Release
 
 <div align="center">
   <p>
-       <img width="100%" src="./asserts/04.jpg" alt="start">
+       <img width="100%" src="./assets/04.jpg" alt="start">
   </p>
 </div>
 
@@ -90,7 +90,7 @@ cmake --build . --config Release
 
 <div align="center">
   <p>
-       <img width="100%" src="./asserts/02.png" alt="start">
+       <img width="100%" src="./assets/02.png" alt="start">
   </p>
 </div>
 

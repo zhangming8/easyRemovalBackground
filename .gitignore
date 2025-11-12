@@ -22,10 +22,10 @@ build_*
 *.onnx
 # thirdparty
 
-# !asserts/01.png
-# !asserts/02.png
-# !asserts/dog.png
-# !asserts/person.webp
+# !assets/01.png
+# !assets/02.png
+# !assets/dog.png
+# !assets/person.webp
 
 # *.json
 __pycache__
